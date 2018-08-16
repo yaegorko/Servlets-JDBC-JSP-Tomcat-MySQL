@@ -25,7 +25,7 @@ public class UserDaoImpl implements UserDao {
         }
     }
 
-    public static User getUserById(int id){
+    public static User getUserById(int id) {
         User user = new User();
         try (Connection connection = DbHelper.getDbConnection();
              PreparedStatement stmn = connection.prepareStatement(SQL_GET_BY_ID)) {
@@ -42,17 +42,14 @@ public class UserDaoImpl implements UserDao {
         return user;
     }
 
-    public static boolean deleteUserById(int id) {
-        boolean result = false;
+    public static void deleteUserById(int id) {
         try (Connection connection = DbHelper.getDbConnection();
              PreparedStatement stmn = connection.prepareStatement(SQL_DELETE_BY_ID)) {
             stmn.setInt(1, id);
             stmn.executeUpdate();
-            result = true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return result;
     }
 
     public static void updateUser(User user) {

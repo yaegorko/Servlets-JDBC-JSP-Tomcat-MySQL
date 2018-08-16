@@ -13,12 +13,7 @@ import java.io.IOException;
 @WebServlet(name = "UpdateServlet", displayName = "UpdateServlet", urlPatterns = {"/update"})
 public class UpdateServlet extends HttpServlet {
 
-    User user;
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-    }
+    private User user;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
