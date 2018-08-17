@@ -10,10 +10,6 @@ import javax.persistence.NoResultException;
 import java.util.List;
 
 public class UserDaoImplHibernate implements UserDao<User> {
-//    private Session session;
-//    private Transaction transaction;
-//    private static final String HQL_CREATE = "INSERT INTO users (name, password)";
-//    private static final String HQL_GET_ALL_USERS = " ";
 
     private static UserDao userDao;
 

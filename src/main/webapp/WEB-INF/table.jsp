@@ -26,16 +26,12 @@
             <td>${list.password}</td>
             <form method="get" action="/update">
                 <td>
-
                     <button type="submit" name="update" value=${list.id}> Update</button>
-
                 </td>
             </form>
             <form method="post" action="/delete">
                 <td>
-
                     <button type="submit" name="delete" value=${list.id}> Delete</button>
-
                 </td>
             </form>
         </tr>
