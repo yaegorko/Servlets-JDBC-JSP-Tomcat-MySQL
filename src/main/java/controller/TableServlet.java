@@ -15,11 +15,11 @@ import java.util.List;
 @WebServlet(name = "TableServlet", displayName = "TableServlet", urlPatterns = {"/table"})
 public class TableServlet extends HttpServlet {
 
-    private UserServiceImpl userService;
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<User> list = userService.getUserService().getAllUsers();
+        List<User> list = UserServiceImpl.getUserService().getAllUsers();
         req.setAttribute("list", list);
         req.getRequestDispatcher("WEB-INF/table.jsp").forward(req, resp);
     }
@@ -33,8 +33,7 @@ public class TableServlet extends HttpServlet {
             resp.sendRedirect("/create");
         }
         if (delete != null) {
-            userService.getUserService().deleteUser(Integer.parseInt(delete));
-            resp.sendRedirect("/table");
+            req.getRequestDispatcher("/delete").forward(req, resp);
         }
         if (update != null) {
             req.getRequestDispatcher("/update").forward(req, resp);
