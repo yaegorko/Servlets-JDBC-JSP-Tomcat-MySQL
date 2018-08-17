@@ -38,7 +38,6 @@ public class UserDaoImplJDBC implements UserDao<User> {
         }
     }
 
-
     public User getUserById(int id) {
         User user = new User();
         try (PreparedStatement stmn = connection.prepareStatement(SQL_GET_BY_ID)) {

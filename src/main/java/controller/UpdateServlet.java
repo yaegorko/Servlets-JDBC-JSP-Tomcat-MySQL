@@ -35,6 +35,5 @@ public class UpdateServlet extends HttpServlet {
         user.setPassword(req.getParameter("password"));
         UserServiceImpl.getUserService().updateUser(user);
         resp.sendRedirect("/table");
-
     }
 }

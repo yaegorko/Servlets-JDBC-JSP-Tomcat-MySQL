@@ -58,5 +58,4 @@ public class DbHelper {
         ServiceRegistry serviceRegistry = builder.build();
         return configuration.buildSessionFactory(serviceRegistry);
     }
-
 }

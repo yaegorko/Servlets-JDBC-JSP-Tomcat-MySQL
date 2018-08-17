@@ -13,7 +13,6 @@ import java.io.IOException;
 @WebServlet(name = "CreateUserServlet", displayName = "CreateUserServlet", urlPatterns = {"/create"})
 public class CreateUserServlet extends HttpServlet {
 
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = "Create";

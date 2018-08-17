@@ -15,21 +15,10 @@ import java.util.List;
 @WebServlet(name = "TableServlet", displayName = "TableServlet", urlPatterns = {"/table"})
 public class TableServlet extends HttpServlet {
 
-
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<User> list = UserServiceImpl.getUserService().getAllUsers();
         req.setAttribute("list", list);
         req.getRequestDispatcher("WEB-INF/table.jsp").forward(req, resp);
     }
-
-//    @Override
-//    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        String action = req.getParameter("action");
-//        if ("Add new user".equals(action)) {
-//            resp.sendRedirect("/create");
-//        }
-//    }
-
 }
