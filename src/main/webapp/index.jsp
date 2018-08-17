@@ -6,13 +6,5 @@
 <title> Таблица юзеров </title>
 <body>
 
-
-<c:forEach var="c" items="${users}">
-    <c:set var="qry" value="?id=${c.id}"/>
-
-</c:forEach>
-
-    </table>
-
-    </body>
-    </html>
+</body>
+</html>
