@@ -24,20 +24,12 @@ public class TableServlet extends HttpServlet {
         req.getRequestDispatcher("WEB-INF/table.jsp").forward(req, resp);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String action = req.getParameter("action");
-        String delete = req.getParameter("delete");
-        String update = req.getParameter("update");
-        if ("Add new user".equals(action)) {
-            resp.sendRedirect("/create");
-        }
-        if (delete != null) {
-            req.getRequestDispatcher("/delete").forward(req, resp);
-        }
-        if (update != null) {
-            req.getRequestDispatcher("/update").forward(req, resp);
-        }
-    }
+//    @Override
+//    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        String action = req.getParameter("action");
+//        if ("Add new user".equals(action)) {
+//            resp.sendRedirect("/create");
+//        }
+//    }
 
 }

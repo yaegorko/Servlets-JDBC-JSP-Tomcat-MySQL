@@ -12,14 +12,10 @@ import java.io.IOException;
 @WebServlet(urlPatterns = "/delete")
 public class DeleteServlet extends HttpServlet {
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserServiceImpl.getUserService().deleteUser(Integer.parseInt(req.getParameter("delete")));
-        resp.sendRedirect("/table");
-    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        UserServiceImpl.getUserService().deleteUser(Integer.parseInt(req.getParameter("delete")));
         resp.sendRedirect("/table");
     }
 }

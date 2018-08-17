@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <title>TABLE</title>
@@ -24,24 +24,28 @@
             <td>${list.id}</td>
             <td>${list.name}</td>
             <td>${list.password}</td>
-            <td>
-                <form metod = "post" action = "/update">
-                <button type="submit" name="update" value=${list.id}> Update</button>
-                </form>
-            </td>
-            <td>
-                <form metod = "post" action = "/delete">
-                <button type="submit" name="delete" value=${list.id}> Delete</button>
-                </form>
-            </td>
+            <form method="get" action="/update">
+                <td>
+
+                    <button type="submit" name="update" value=${list.id}> Update</button>
+
+                </td>
+            </form>
+            <form method="post" action="/delete">
+                <td>
+
+                    <button type="submit" name="delete" value=${list.id}> Delete</button>
+
+                </td>
+            </form>
         </tr>
     </c:forEach>
     </tbody>
 </table>
 <table>
-    <form method="post" action="/table">
+    <form method="get" action="/create">
         <tr>
-            <td><input type="submit" name="action" value="Add new user"/></td>
+            <td><button type="submit" name="create">Add new user</button></td>
         </tr>
     </form>
 </table>
