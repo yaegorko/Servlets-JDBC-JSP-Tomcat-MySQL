@@ -15,15 +15,15 @@ public class UserServiceImpl implements UserService<User> {
     /*
     JDBC
      */
-    private UserServiceImpl() {
-        userDao = UserDaoImplJDBC.getUserDao();
-    }
+//    private UserServiceImpl() {
+//        userDao = UserDaoImplJDBC.getUserDao();
+//    }
     /*
     Hibernate
     */
-//    private UserServiceImpl() {
-//        userDao = UserDaoImplHibernate.getUserDao();
-//    }
+    private UserServiceImpl() {
+        userDao = UserDaoImplHibernate.getUserDao();
+    }
 
     public static UserServiceImpl getUserService() {
         if (userService == null) {
@@ -31,7 +31,6 @@ public class UserServiceImpl implements UserService<User> {
         }
         return userService;
     }
-
 
     public void add(User user) {
         userDao.addNewUser(user);

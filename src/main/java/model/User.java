@@ -7,15 +7,8 @@ import java.io.Serializable;
 @Table(name = "users")
 public class User implements Serializable {
 
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    @Column(name = "name")
     private String name;
-
-    @Column(name = "password")
     private String password;
 
     public User(int id, String name, String password) {
@@ -32,6 +25,9 @@ public class User implements Serializable {
     public User() {
     }
 
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -40,6 +36,7 @@ public class User implements Serializable {
         this.id = id;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -48,6 +45,7 @@ public class User implements Serializable {
         this.name = name;
     }
 
+    @Column(name = "password")
     public String getPassword() {
         return password;
     }

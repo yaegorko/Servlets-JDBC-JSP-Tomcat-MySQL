@@ -15,8 +15,10 @@ public class UserDaoImplJDBC implements UserDao<User> {
     private static final String SQL_UPDATE = "UPDATE users SET name=?, password=? WHERE id=?";
 
     private static UserDao userDao;
+    private static Connection connection = DbHelper.getDbConnection();
 
     private UserDaoImplJDBC() {
+
     }
 
     public static UserDao getUserDao() {
@@ -27,8 +29,7 @@ public class UserDaoImplJDBC implements UserDao<User> {
     }
 
     public void addNewUser(User user) {
-        try (Connection connection = DbHelper.getDbConnection();
-             PreparedStatement stmn = connection.prepareStatement(SQL_CREATE)) {
+        try (PreparedStatement stmn = connection.prepareStatement(SQL_CREATE)) {
             stmn.setString(1, user.getName());
             stmn.setString(2, user.getPassword());
             stmn.executeUpdate();
@@ -40,8 +41,7 @@ public class UserDaoImplJDBC implements UserDao<User> {
 
     public User getUserById(int id) {
         User user = new User();
-        try (Connection connection = DbHelper.getDbConnection();
-             PreparedStatement stmn = connection.prepareStatement(SQL_GET_BY_ID)) {
+        try (PreparedStatement stmn = connection.prepareStatement(SQL_GET_BY_ID)) {
             stmn.setInt(1, id);
             ResultSet resultSet = stmn.executeQuery();
             while (resultSet.next()) {
@@ -56,8 +56,7 @@ public class UserDaoImplJDBC implements UserDao<User> {
     }
 
     public void deleteUserById(int id) {
-        try (Connection connection = DbHelper.getDbConnection();
-             PreparedStatement stmn = connection.prepareStatement(SQL_DELETE_BY_ID)) {
+        try (PreparedStatement stmn = connection.prepareStatement(SQL_DELETE_BY_ID)) {
             stmn.setInt(1, id);
             stmn.executeUpdate();
         } catch (SQLException e) {
@@ -66,8 +65,7 @@ public class UserDaoImplJDBC implements UserDao<User> {
     }
 
     public void updateUser(User user) {
-        try (Connection connection = DbHelper.getDbConnection();
-             PreparedStatement stmn = connection.prepareStatement(SQL_UPDATE)) {
+        try (PreparedStatement stmn = connection.prepareStatement(SQL_UPDATE)) {
             stmn.setString(1, user.getName());
             stmn.setString(2, user.getPassword());
             stmn.setInt(3, user.getId());
@@ -80,8 +78,7 @@ public class UserDaoImplJDBC implements UserDao<User> {
     public List<User> getAllUsers() {
         List<User> usersList = new ArrayList<>();
 
-        try (Connection connection = DbHelper.getDbConnection();
-             PreparedStatement stmn = connection.prepareStatement(SQL_GET_ALL)) {
+        try (PreparedStatement stmn = connection.prepareStatement(SQL_GET_ALL)) {
             ResultSet resultSet = stmn.executeQuery();
             while (resultSet.next()) {
                 usersList.add(new User(resultSet.getInt("id"),
@@ -93,5 +90,4 @@ public class UserDaoImplJDBC implements UserDao<User> {
         }
         return usersList;
     }
-
 }
