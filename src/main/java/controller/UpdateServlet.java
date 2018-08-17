@@ -1,7 +1,7 @@
 package controller;
 
-import dao.UserDaoImpl;
 import model.User;
+import service.UserServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +14,7 @@ import java.io.IOException;
 public class UpdateServlet extends HttpServlet {
 
     private User user;
+    private UserServiceImpl userService;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -25,13 +26,13 @@ public class UpdateServlet extends HttpServlet {
             req.setAttribute("string", string);
             String suffix = "user";
             req.setAttribute("suffix", suffix);
-            user = UserDaoImpl.getUserById(Integer.parseInt(s));
+            user = userService.getUserService().getById(Integer.parseInt(s));
             req.setAttribute("user", user);
             req.getRequestDispatcher("WEB-INF/create.jsp").forward(req, resp);
         } else {
             user.setName(req.getParameter("name"));
             user.setPassword(req.getParameter("password"));
-            UserDaoImpl.updateUser(user);
+            userService.getUserService().updateUser(user);
             resp.sendRedirect("/table");
         }
     }

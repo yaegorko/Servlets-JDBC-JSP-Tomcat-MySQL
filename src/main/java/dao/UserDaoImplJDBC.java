@@ -7,14 +7,26 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDaoImpl implements UserDao {
+public class UserDaoImplJDBC implements UserDao<User> {
     private static final String SQL_CREATE = "INSERT INTO users (name, password) VALUES (?,?)";
     private static final String SQL_GET_BY_ID = "SELECT * FROM users WHERE id=?";
     private static final String SQL_GET_ALL = "SELECT * FROM users";
     private static final String SQL_DELETE_BY_ID = "DELETE FROM users WHERE id=?";
     private static final String SQL_UPDATE = "UPDATE users SET name=?, password=? WHERE id=?";
 
-    public static void addNewUser(User user) {
+    private static UserDao userDao;
+
+    private UserDaoImplJDBC() {
+    }
+
+    public static UserDao getUserDao() {
+        if (userDao == null) {
+            userDao = new UserDaoImplJDBC();
+        }
+        return userDao;
+    }
+
+    public void addNewUser(User user) {
         try (Connection connection = DbHelper.getDbConnection();
              PreparedStatement stmn = connection.prepareStatement(SQL_CREATE)) {
             stmn.setString(1, user.getName());
@@ -25,7 +37,8 @@ public class UserDaoImpl implements UserDao {
         }
     }
 
-    public static User getUserById(int id) {
+
+    public User getUserById(int id) {
         User user = new User();
         try (Connection connection = DbHelper.getDbConnection();
              PreparedStatement stmn = connection.prepareStatement(SQL_GET_BY_ID)) {
@@ -42,7 +55,7 @@ public class UserDaoImpl implements UserDao {
         return user;
     }
 
-    public static void deleteUserById(int id) {
+    public void deleteUserById(int id) {
         try (Connection connection = DbHelper.getDbConnection();
              PreparedStatement stmn = connection.prepareStatement(SQL_DELETE_BY_ID)) {
             stmn.setInt(1, id);
@@ -52,7 +65,7 @@ public class UserDaoImpl implements UserDao {
         }
     }
 
-    public static void updateUser(User user) {
+    public void updateUser(User user) {
         try (Connection connection = DbHelper.getDbConnection();
              PreparedStatement stmn = connection.prepareStatement(SQL_UPDATE)) {
             stmn.setString(1, user.getName());
@@ -64,7 +77,7 @@ public class UserDaoImpl implements UserDao {
         }
     }
 
-    public static List<User> getAllUsers() {
+    public List<User> getAllUsers() {
         List<User> usersList = new ArrayList<>();
 
         try (Connection connection = DbHelper.getDbConnection();
@@ -80,4 +93,5 @@ public class UserDaoImpl implements UserDao {
         }
         return usersList;
     }
+
 }

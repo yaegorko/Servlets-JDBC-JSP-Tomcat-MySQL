@@ -1,7 +1,7 @@
 package controller;
 
-import dao.UserDaoImpl;
 import model.User;
+import service.UserServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +14,8 @@ import java.io.IOException;
 @WebServlet (name="CreateUserServlet", displayName="CreateUserServlet", urlPatterns = {"/create"})
 public class CreateUserServlet extends HttpServlet {
 
-    User user;
+    private User user;
+    private UserServiceImpl userService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -33,7 +34,7 @@ public class CreateUserServlet extends HttpServlet {
         resp.setCharacterEncoding("UTF-8");
         user.setName(req.getParameter("name"));
         user.setPassword(req.getParameter("password"));
-        UserDaoImpl.addNewUser(user);
+        userService.getUserService().add(user);
         resp.sendRedirect("/table");
     }
 }

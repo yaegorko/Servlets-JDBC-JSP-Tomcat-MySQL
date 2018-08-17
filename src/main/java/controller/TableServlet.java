@@ -1,7 +1,7 @@
 package controller;
 
-import dao.UserDaoImpl;
 import model.User;
+import service.UserServiceImpl;
 
 
 import javax.servlet.ServletException;
@@ -12,12 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name="TableServlet", displayName="TableServlet", urlPatterns = {"/table"})
+@WebServlet(name = "TableServlet", displayName = "TableServlet", urlPatterns = {"/table"})
 public class TableServlet extends HttpServlet {
+
+    private UserServiceImpl userService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<User> list = UserDaoImpl.getAllUsers();
+        List<User> list = userService.getUserService().getAllUsers();
         req.setAttribute("list", list);
         req.getRequestDispatcher("WEB-INF/table.jsp").forward(req, resp);
     }
@@ -31,13 +33,12 @@ public class TableServlet extends HttpServlet {
             resp.sendRedirect("/create");
         }
         if (delete != null) {
-            UserDaoImpl.deleteUserById(Integer.parseInt(delete));
+            userService.getUserService().deleteUser(Integer.parseInt(delete));
             resp.sendRedirect("/table");
         }
         if (update != null) {
             req.getRequestDispatcher("/update").forward(req, resp);
         }
-        System.out.println("");
     }
 
 }
