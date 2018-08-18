@@ -5,11 +5,11 @@
     <title><html>
     <head>
         <meta charset="US-ASCII">
-        <title>Index Page</title>
+        <title>Login Page</title>
     </head>
 <body>
-Это индекс пэйдж
-<form action="/table" method="get">
+Это логин пэйдж
+<form action="/accept" method="get">
 
     Username: <input type="text" name="user">
     <br>

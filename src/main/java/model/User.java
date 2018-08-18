@@ -14,8 +14,11 @@ public class User implements Serializable {
     private String name;
     @Column(name = "password")
     private String password;
+    @Column(name = "role")
+    private String role;
 
-    public User(int id, String name, String password) {
+    public User(int id,
+                String name, String password) {
         this.id = id;
         this.name = name;
         this.password = password;
@@ -51,5 +54,13 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

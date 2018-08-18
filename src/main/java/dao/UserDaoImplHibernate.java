@@ -46,6 +46,13 @@ public class UserDaoImplHibernate implements UserDao<User> {
     }
 
     @Override
+    public User getUserByName(String name) {
+        Session session = getSession();
+        Query query = session.createQuery("from User where name=:name");
+        return (User) query.setParameter("name", name).uniqueResult();
+    }
+
+    @Override
     public void updateUser(User user) {
         Session session = getSession();
         Transaction transaction = session.beginTransaction();

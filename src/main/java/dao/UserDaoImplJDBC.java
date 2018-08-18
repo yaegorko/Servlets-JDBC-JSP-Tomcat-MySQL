@@ -10,6 +10,7 @@ import java.util.List;
 public class UserDaoImplJDBC implements UserDao<User> {
     private static final String SQL_CREATE = "INSERT INTO users (name, password) VALUES (?,?)";
     private static final String SQL_GET_BY_ID = "SELECT * FROM users WHERE id=?";
+    private static final String SQL_GET_BY_NAME = "SELECT * FROM users WHERE name=?";
     private static final String SQL_GET_ALL = "SELECT * FROM users";
     private static final String SQL_DELETE_BY_ID = "DELETE FROM users WHERE id=?";
     private static final String SQL_UPDATE = "UPDATE users SET name=?, password=? WHERE id=?";
@@ -88,5 +89,10 @@ public class UserDaoImplJDBC implements UserDao<User> {
             e.printStackTrace();
         }
         return usersList;
+    }
+
+    @Override
+    public User getUserByName(String name) {
+        return null;
     }
 }

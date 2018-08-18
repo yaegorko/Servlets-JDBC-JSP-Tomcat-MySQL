@@ -1,4 +1,4 @@
-package controller;
+package controller.servlets;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +11,6 @@ import java.io.IOException;
 public class StartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect("/table");
+        resp.sendRedirect("/login");
     }
 }

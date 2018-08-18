@@ -7,12 +7,12 @@
 </head>
 <body>
 <b> <c:out value="${string}"/> <c:out value="${suffix}"/> </b>
-<br/>
-<form method="post" action="/${string.toLowerCase()}">
+<form method="post" action="/admin/${string.toLowerCase()}">
     <input type="hidden" name="id" value=${user.id}>
     Enter User Name <input type="text" name="name" value=${user.name}> <br>
     Enter Password <input type="text" name="password" value=${user.password}> <br>
     <input type="submit" value="${string}">
+</form>
 </form>
 </body>
 </html>
