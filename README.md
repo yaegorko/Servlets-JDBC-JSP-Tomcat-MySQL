@@ -6,5 +6,5 @@ Tomcat Linux install
     IDEA
 4. AddConfiguration - "+" - Tomcat server - Local
 5. Configure (add tomcat catalog)
-6. https://github.com/yaegorko/Servlets-JDBC-JSP-Tomcat-MySQL/blob/master/screens/Tomcat%20config1.png
-7. https://github.com/yaegorko/Servlets-JDBC-JSP-Tomcat-MySQL/blob/master/screens/Tomcat%20config2.png
+6. ![alt text]https://github.com/yaegorko/Servlets-JDBC-JSP-Tomcat-MySQL/blob/master/screens/Tomcat%20config1.png
+7. ![alt text]https://github.com/yaegorko/Servlets-JDBC-JSP-Tomcat-MySQL/blob/master/screens/Tomcat%20config2.png
